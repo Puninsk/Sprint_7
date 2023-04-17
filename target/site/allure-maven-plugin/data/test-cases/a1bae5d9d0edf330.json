@@ -1,0 +1,56 @@
+{
+  "uid" : "a1bae5d9d0edf330",
+  "name" : "incorrectLoginOrPasswordLogInDeined",
+  "fullName" : "CourierLoginTest.incorrectLoginOrPasswordLogInDeined",
+  "historyId" : "4399e91c50a8351ed5b00516100652bc",
+  "time" : {
+    "start" : 1681692007682,
+    "stop" : 1681692011179,
+    "duration" : 3497
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : ""
+  }, {
+    "name" : "testClass",
+    "value" : "CourierLoginTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "incorrectLoginOrPasswordLogInDeined"
+  }, {
+    "name" : "suite",
+    "value" : "CourierLoginTest"
+  }, {
+    "name" : "host",
+    "value" : "Nikitas-MacBook-Pro.local"
+  }, {
+    "name" : "thread",
+    "value" : "20839@Nikitas-MacBook-Pro.local.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit4"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "a1bae5d9d0edf330.json",
+  "parameterValues" : [ ]
+}

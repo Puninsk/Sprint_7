@@ -1,0 +1,56 @@
+{
+  "uid" : "7057f015476ad1d",
+  "name" : "canLoginCourier",
+  "fullName" : "CourierLoginTest.canLoginCourier",
+  "historyId" : "34a1fe5ac11c99c3365b1b0a3d4ab59f",
+  "time" : {
+    "start" : 1681692012191,
+    "stop" : 1681692013061,
+    "duration" : 870
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : ""
+  }, {
+    "name" : "testClass",
+    "value" : "CourierLoginTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "canLoginCourier"
+  }, {
+    "name" : "suite",
+    "value" : "CourierLoginTest"
+  }, {
+    "name" : "host",
+    "value" : "Nikitas-MacBook-Pro.local"
+  }, {
+    "name" : "thread",
+    "value" : "20839@Nikitas-MacBook-Pro.local.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit4"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "7057f015476ad1d.json",
+  "parameterValues" : [ ]
+}

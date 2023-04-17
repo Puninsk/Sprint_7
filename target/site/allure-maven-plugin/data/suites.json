@@ -1,0 +1,130 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "CourierLoginTest",
+    "children" : [ {
+      "name" : "incorrectLoginOrPasswordLogInDeined",
+      "uid" : "a1bae5d9d0edf330",
+      "parentUid" : "13d45267b1246dc344b129b4c1a80c97",
+      "status" : "passed",
+      "time" : {
+        "start" : 1681692007682,
+        "stop" : 1681692011179,
+        "duration" : 3497
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "errorWithNoUser",
+      "uid" : "ebf6a9e31ba3bb56",
+      "parentUid" : "13d45267b1246dc344b129b4c1a80c97",
+      "status" : "passed",
+      "time" : {
+        "start" : 1681692011257,
+        "stop" : 1681692012186,
+        "duration" : 929
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "canLoginCourier",
+      "uid" : "7057f015476ad1d",
+      "parentUid" : "13d45267b1246dc344b129b4c1a80c97",
+      "status" : "passed",
+      "time" : {
+        "start" : 1681692012191,
+        "stop" : 1681692013061,
+        "duration" : 870
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "courierAuthorize",
+      "uid" : "5a25900e0bb1216a",
+      "parentUid" : "13d45267b1246dc344b129b4c1a80c97",
+      "status" : "passed",
+      "time" : {
+        "start" : 1681692013065,
+        "stop" : 1681692014341,
+        "duration" : 1276
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "requiredFieldIsMissing",
+      "uid" : "e4939ece8c8df572",
+      "parentUid" : "13d45267b1246dc344b129b4c1a80c97",
+      "status" : "passed",
+      "time" : {
+        "start" : 1681692014343,
+        "stop" : 1681692015361,
+        "duration" : 1018
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "requiredFieldsForAuthorization",
+      "uid" : "852161b71658be27",
+      "parentUid" : "13d45267b1246dc344b129b4c1a80c97",
+      "status" : "passed",
+      "time" : {
+        "start" : 1681692015363,
+        "stop" : 1681692016557,
+        "duration" : 1194
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "13d45267b1246dc344b129b4c1a80c97"
+  }, {
+    "name" : "CreateCourierTest",
+    "children" : [ {
+      "name" : "cannotCreateTwoSimularCourier",
+      "uid" : "237471d72a978a91",
+      "parentUid" : "1dc0e94a33f3efc71cf1fe6720ef6e53",
+      "status" : "failed",
+      "time" : {
+        "start" : 1681692016561,
+        "stop" : 1681692017526,
+        "duration" : 965
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "createCourier",
+      "uid" : "6aa2efd1cefb149d",
+      "parentUid" : "1dc0e94a33f3efc71cf1fe6720ef6e53",
+      "status" : "failed",
+      "time" : {
+        "start" : 1681692017529,
+        "stop" : 1681692018413,
+        "duration" : 884
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "cannotCreateCourierWithNotAllRequairedFields",
+      "uid" : "9d55e02ad64f1e2c",
+      "parentUid" : "1dc0e94a33f3efc71cf1fe6720ef6e53",
+      "status" : "passed",
+      "time" : {
+        "start" : 1681692018417,
+        "stop" : 1681692019656,
+        "duration" : 1239
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "1dc0e94a33f3efc71cf1fe6720ef6e53"
+  } ]
+}
