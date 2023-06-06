@@ -1,133 +1,94 @@
 import io.restassured.response.ValidatableResponse;
+import org.apache.http.HttpStatus;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import io.restassured.RestAssured;
-import static io.restassured.RestAssured.given;
+import project.Courier;
+import project.CourierClient;
+
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertTrue;
+
+import static project.CourierCreds.credsFrom;
+
+import static org.junit.Assert.assertEquals;
 import io.qameta.allure.junit4.DisplayName;
 
 
 public class CourierLoginTest {
 
-    int courierId;
+    private CourierClient courierClient;
+    private Courier courier;
+
+    private int courierId;
+
+    boolean trueStatement;
 
     @Before
     public void setUp() {
-        RestAssured.baseURI = "http://qa-scooter.praktikum-services.ru/";
+        courierClient = new CourierClient();
     }
 
     @Test
-    public void courierAuthorize() {
-        CourierUser courierUser = new CourierUser("cocofive", "1234");
-        ValidatableResponse response = given()
-                .header("Content-type", "application/json")
-                .body(courierUser)
-                .when()
-                .post("/api/v1/courier")
-                .then();
-
-        ValidatableResponse responseLogin = given()
-                .header("Content-type", "application/json")
-                .body(courierUser)
-                .when()
-                .post("/api/v1/courier/login")
-                .then()
-                .statusCode(200);
-        responseLogin.assertThat().body("id", notNullValue());
+    @DisplayName("Courier authorization Successful")
+    public void courierSuccessfulAuthorization() {
+        courier = new Courier("kiki", "1234", "qwqw");
+        ValidatableResponse response = courierClient.create(courier);
+        ValidatableResponse loginResponse = CourierClient.login(credsFrom(courier));
+        assertEquals(HttpStatus.SC_OK, loginResponse.extract().statusCode());
     }
+            @Test
+            @DisplayName("Successful authorization shows id")
+            public void courierAuthorizationIdCheck () {
+            courier = new Courier("Kiki", "1234", "qwqw");
+            ValidatableResponse response = courierClient.create(courier);
+            ValidatableResponse loginResponse = CourierClient.login(credsFrom(courier));
+            loginResponse.assertThat().body("id", notNullValue());
+        }
 
-    @Test
-    public void requiredFieldsForAuthorization() {
-        CourierUser courierUser = new CourierUser("cocofive", "1234");
-        courierUser.setLogin("");
-        ValidatableResponse response = given()
-                .header("Content-type", "application/json")
-                .body(courierUser)
-                .when()
-                .post("/api/v1/courier/login")
-                .then()
-                .statusCode(400);
+            @Test
+            @DisplayName("Authorization without password")
+            public void courierAuthorizeWithoutPasssword () {
+            courier = new Courier("Kiki", "1234", "qwqw");
+            ValidatableResponse response = courierClient.create(courier);
+            courier.setPassword("");
+            ValidatableResponse loginResponse = CourierClient.login(credsFrom(courier));
+            loginResponse.assertThat().body("message", equalTo("Недостаточно данных для входа"));
+            trueStatement = true;
+        }
 
-        response.assertThat().body("message", equalTo("Недостаточно данных для входа"));
-
-        courierUser.setLogin("cocofive");
-        courierUser.setPassword("");
-        response = given()
-                .header("Content-type", "application/json")
-                .body(courierUser)
-                .when()
-                .post("/api/v1/courier/login")
-                .then()
-                .statusCode(400);
-
-        response.assertThat().body("message", equalTo("Недостаточно данных для входа"));
-    }
-
-    @Test
-    public void incorrectLoginOrPasswordLogInDeined() {
-        CourierUser courierUser = new CourierUser("cocofive", "wrongPassword");
-        ValidatableResponse response = given()
-                .header("Content-type", "application/json")
-                .body(courierUser)
-                .when()
-                .post("/api/v1/courier/login")
-                .then()
-                .statusCode(404);
-        response.assertThat().body("message", equalTo("Учетная запись не найдена"));
-    }
-
-    @Test
-    public void requiredFieldIsMissing() {
-        CourierUser courierUser = new CourierUser("", "1234");
-        ValidatableResponse response = given()
-                .header("Content-type", "application/json")
-                .body(courierUser)
-                .when()
-                .post("/api/v1/courier/login")
-                .then()
-                .statusCode(400);
-
-        response.assertThat().body("message", equalTo("Недостаточно данных для входа"));
-    }
-
-    @Test
-    public void errorWithNoUser() {
-        CourierUser courierUser = new CourierUser("nonexistent", "password");
-        ValidatableResponse response = given()
-                .header("Content-type", "application/json")
-                .body(courierUser)
-                .when()
-                .post("/api/v1/courier/login")
-                .then()
-                .statusCode(404);
-
-        response.assertThat().body("message", equalTo("Учетная запись не найдена"));
-    }
+            @Test
+            @DisplayName("Authorization without login")
+            public void authorizationWithoutLogin () {
+            courier = new Courier("Kiki", "1234", "qwqw");
+            ValidatableResponse response = courierClient.create(courier);
+            courier.setLogin("");
+            ValidatableResponse loginResponse = CourierClient.login(credsFrom(courier));
+            loginResponse.assertThat().body("message", equalTo("Недостаточно данных для входа"));
+            trueStatement = true;
+        }
 
 
-    @Test
-    public void canLoginCourier() {
-        CourierUser courierUser = new CourierUser("cocofive", "1234");
-        ValidatableResponse response = given()
-                .header("Content-type", "application/json")
-                .body(courierUser)
-                .when()
-                .post("/api/v1/courier/login")
-                .then()
-                .statusCode(200);
+            @Test
+            @DisplayName("Authorization with invalid courier")
+            public void сourierAuthorization () {
+            courier = new Courier("Kik", "1234", "qwqw");
+            ValidatableResponse response = courierClient.create(courier);
+            assertEquals(HttpStatus.SC_CREATED, response.extract().statusCode());
+            ValidatableResponse loginResponse = CourierClient.login(credsFrom(courier));
+            courierId = loginResponse.extract().path("id");
+            courierClient.delete(courierId);
+            ValidatableResponse loginResponse2 = CourierClient.login(credsFrom(courier));
+            assertEquals(HttpStatus.SC_NOT_FOUND, loginResponse2.extract().statusCode());
+            trueStatement = true;
+        }
 
-        int courierId = response.extract().path("id");
-        assertTrue(courierId > 0);
-    }
-
-    @After
-    public void cleanAll(){
-        given()
-                .when()
-                .delete("/api/v1/courier/" + courierId);
-    }
-
-}
+            @After
+            public void cleanAll () {
+                if (trueStatement != true) {
+                ValidatableResponse loginResponse = CourierClient.login(credsFrom(courier));
+                courierId = loginResponse.extract().path("id");
+                courierClient.delete(courierId);
+            }
+        }
+        }

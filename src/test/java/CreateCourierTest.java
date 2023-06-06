@@ -1,99 +1,72 @@
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
+import org.apache.http.HttpStatus;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import io.restassured.RestAssured;
-import static io.restassured.RestAssured.given;
+import project.Courier;
+import project.CourierClient;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
+import static project.CourierCreds.credsFrom;
+
 
 public class CreateCourierTest {
 
     int courierId;
+
+    private CourierClient courierClient;
+    private Courier courier;
+    boolean trueStatement;
+
+
+    @Test
+    @DisplayName("Create courier success")
+    public void courierCreateTest() {
+        courier = new Courier("Ninaa", "1234", "qwqw");
+        ValidatableResponse response = courierClient.create(courier);
+        assertEquals(HttpStatus.SC_CREATED, response.extract().statusCode());
+    }
+
+    @Test
+    @DisplayName("Create courier success right message")
+    public void courierCreateTestRightMessage() {
+        courier = new Courier("Ninaa", "1234", "qwqw");
+        ValidatableResponse response = courierClient.create(courier);
+        response.assertThat().body("ok", equalTo(true));
+    }
+
+    @Test
+    @DisplayName("Create courier with not all fields")
+    public void courierCreateTestNotAllFields() {
+        courier = new Courier("Ninaa", "", "");
+        ValidatableResponse response = courierClient.create(courier);
+        assertEquals(HttpStatus.SC_BAD_REQUEST, response.extract().statusCode());
+        trueStatement = true;
+    }
+
+    @Test
+    @DisplayName("Cannot create courier with the same name")
+    public void courierCreateSameName() {
+        courier = new Courier("Ninaa", "1234", "qwqw");
+        ValidatableResponse response = courierClient.create(courier);
+        assertEquals(HttpStatus.SC_CREATED, response.extract().statusCode());
+        ValidatableResponse responseTwo = courierClient.create(courier);
+        assertEquals(HttpStatus.SC_CONFLICT, responseTwo.extract().statusCode());
+    }
+
     @Before
     public void setUp() {
-        RestAssured.baseURI = "http://qa-scooter.praktikum-services.ru/";
+        courierClient = new CourierClient();
     }
-
-    @Test
-    public void createCourier() {
-        CourierUser courierUser = new CourierUser("cocofive", "1234"); // создай объект, который соответствует JSON
-        ValidatableResponse response = (ValidatableResponse) given()
-                .header("Content-type", "application/json")
-                .body(courierUser)
-                .when()// заполни body
-                .post("/api/v1/courier")
-                .then()
-                .statusCode(201)
-                .body("ok", equalTo(true));
-
-        ValidatableResponse responseLogin = (ValidatableResponse) given()
-                .header("Content-type", "application/json")
-                .body(courierUser)
-                .when()// заполни body
-                .post("/api/v1/courier/login")
-                .then()
-                .statusCode(200);
-
-        courierId = responseLogin.extract().path("id");
-
-    }
-
-
 
     @After
-    public void cleanAll(){
-        given()
-                .when()
-                .delete("/api/v1/courier/" + courierId);
-    }
-
-
-    @Test
-    public void cannotCreateTwoSimularCourier() {
-            CourierUser courierUser = new CourierUser("coconike", "1234"); // создай объект, который соответствует JSON
-            ValidatableResponse response = given()
-                    .header("Content-type", "application/json")
-                    .body(courierUser)
-                    .when()// заполни body
-                    .post("/api/v1/courier")
-                    .then()
-                    .statusCode(201);
-
-            ValidatableResponse responseSecondCourier = given()
-                    .header("Content-type", "application/json")
-                    .body(courierUser)
-                    .when()
-                    .post("/api/v1/courier")
-                    .then()
-                    .statusCode(409);
-        responseSecondCourier.assertThat().body("message", equalTo("Этот логин уже используется"));
-
-        courierId = response.extract().path("id");
-
+    public void tearDown() {
+            if (trueStatement != true) {
+            ValidatableResponse loginResponse = CourierClient.login(credsFrom(courier));
+            courierId = loginResponse.extract().path("id");
+                courierClient.delete(courierId);
         }
-
-
-    @Test
-    public void cannotCreateCourierWithNotAllRequairedFields() {
-        CourierUser courierUser = new CourierUser("", "1234");
-        ValidatableResponse response = given()
-                .header("Content-type", "application/json")
-                .body(courierUser)
-                .when()
-                .post("/api/v1/courier")
-                .then()
-                .statusCode(400);
-        response.assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи"));
-
-        courierUser = new CourierUser("coco", "");
-        response = given()
-                .header("Content-type", "application/json")
-                .body(courierUser)
-                .when()// заполни body
-                .post("/api/v1/courier")
-                .then()
-                .statusCode(400);
-        response.assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи"));
     }
 
-    }
+}

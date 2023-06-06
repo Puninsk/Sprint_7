@@ -1,18 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: CreateCourierTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 3.074 s <<< FAILURE! - in CreateCourierTest
-cannotCreateTwoSimularCourier(CreateCourierTest)  Time elapsed: 0.943 s  <<< FAILURE!
-java.lang.AssertionError: 
-1 expectation failed.
-Expected status code <201> but was <409>.
-
-	at CreateCourierTest.cannotCreateTwoSimularCourier(CreateCourierTest.java:60)
-
-createCourier(CreateCourierTest)  Time elapsed: 0.884 s  <<< FAILURE!
-java.lang.AssertionError: 
-1 expectation failed.
-Expected status code <201> but was <409>.
-
-	at CreateCourierTest.createCourier(CreateCourierTest.java:26)
-
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.748 s - in CreateCourierTest
