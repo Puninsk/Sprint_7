@@ -1,15 +1,14 @@
+import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import org.apache.http.HttpStatus;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import project.Courier;
 import project.CourierClient;
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertEquals;
-import static project.CourierCreds.credsFrom;
 
+import static org.hamcrest.Matchers.equalTo;
+import static project.CourierCreds.credsFrom;
 
 public class CreateCourierTest {
 
@@ -21,38 +20,39 @@ public class CreateCourierTest {
 
 
     @Test
-    @DisplayName("Create courier success")
-    public void courierCreateTest() {
-        courier = new Courier("Ninaa", "1234", "qwqw");
-        ValidatableResponse response = courierClient.create(courier);
-        assertEquals(HttpStatus.SC_CREATED, response.extract().statusCode());
-    }
-
-    @Test
     @DisplayName("Create courier success right message")
     public void courierCreateTestRightMessage() {
         courier = new Courier("Ninaa", "1234", "qwqw");
         ValidatableResponse response = courierClient.create(courier);
-        response.assertThat().body("ok", equalTo(true));
+        response.statusCode(201).assertThat().body("ok", equalTo(true));
     }
 
     @Test
     @DisplayName("Create courier with not all fields")
     public void courierCreateTestNotAllFields() {
+        trueStatement = true;
         courier = new Courier("Ninaa", "", "");
         ValidatableResponse response = courierClient.create(courier);
-        assertEquals(HttpStatus.SC_BAD_REQUEST, response.extract().statusCode());
-        trueStatement = true;
+        response.statusCode(400).assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи"));
     }
 
     @Test
     @DisplayName("Cannot create courier with the same name")
     public void courierCreateSameName() {
+        creatingCourierFirst();
+        creatingCourierSecond();
+    }
+
+    @Step("Creating a courier")
+    public void creatingCourierFirst() {
         courier = new Courier("Ninaa", "1234", "qwqw");
         ValidatableResponse response = courierClient.create(courier);
-        assertEquals(HttpStatus.SC_CREATED, response.extract().statusCode());
+    }
+
+    @Step("Creating a second courier")
+    public void creatingCourierSecond() {
         ValidatableResponse responseTwo = courierClient.create(courier);
-        assertEquals(HttpStatus.SC_CONFLICT, responseTwo.extract().statusCode());
+        responseTwo.statusCode(409).assertThat().body("message", equalTo("Этот логин уже используется"));
     }
 
     @Before

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="CreateCourierTest" time="0.748" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="CreateCourierTest" time="1.219" tests="3" errors="0" skipped="0" failures="1">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -16,11 +16,12 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="RU"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/nikitapuninskiy/Documents/QA/Sprint_7/Sprint_7/target/surefire/surefirebooter13084735547450185436.jar /Users/nikitapuninskiy/Documents/QA/Sprint_7/Sprint_7/target/surefire 2023-06-06T10-36-38_589-jvmRun1 surefire7956638925243150148tmp surefire_015357025448298398838tmp"/>
+    <property name="sun.java.command" value="/Users/nikitapuninskiy/Documents/QA/Sprint_7/Sprint_7/target/surefire/surefirebooter6527814967597589361.jar /Users/nikitapuninskiy/Documents/QA/Sprint_7/Sprint_7/target/surefire 2023-06-11T20-02-21_292-jvmRun1 surefire15892652146509615269tmp surefire_06970733480520315559tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/nikitapuninskiy/Documents/QA/Sprint_7/Sprint_7/target/test-classes:/Users/nikitapuninskiy/Documents/QA/Sprint_7/Sprint_7/target/classes:/Users/nikitapuninskiy/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/nikitapuninskiy/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/nikitapuninskiy/.m2/repository/io/rest-assured/rest-assured/5.3.0/rest-assured-5.3.0.jar:/Users/nikitapuninskiy/.m2/repository/org/apache/groovy/groovy/4.0.6/groovy-4.0.6.jar:/Users/nikitapuninskiy/.m2/repository/org/apache/groovy/groovy-xml/4.0.6/groovy-xml-4.0.6.jar:/Users/nikitapuninskiy/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/Users/nikitapuninskiy/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/Users/nikitapuninskiy/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/nikitapuninskiy/.m2/repository/commons-codec/commons-codec/1.11/commons-codec-1.11.jar:/Users/nikitapuninskiy/.m2/repository/org/apache/httpcomponents/httpmime/4.5.13/httpmime-4.5.13.jar:/Users/nikitapuninskiy/.m2/repository/org/hamcrest/hamcrest/2.1/hamcrest-2.1.jar:/Users/nikitapuninskiy/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar:/Users/nikitapuninskiy/.m2/repository/io/rest-assured/json-path/5.3.0/json-path-5.3.0.jar:/Users/nikitapuninskiy/.m2/repository/org/apache/groovy/groovy-json/4.0.6/groovy-json-4.0.6.jar:/Users/nikitapuninskiy/.m2/repository/io/rest-assured/rest-assured-common/5.3.0/rest-assured-common-5.3.0.jar:/Users/nikitapuninskiy/.m2/repository/io/rest-assured/xml-path/5.3.0/xml-path-5.3.0.jar:/Users/nikitapuninskiy/.m2/repository/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar:/Users/nikitapuninskiy/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/nikitapuninskiy/.m2/repository/io/qameta/allure/allure-junit4/2.21.0/allure-junit4-2.21.0.jar:/Users/nikitapuninskiy/.m2/repository/io/qameta/allure/allure-java-commons/2.21.0/allure-java-commons-2.21.0.jar:/Users/nikitapuninskiy/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/Users/nikitapuninskiy/.m2/repository/io/qameta/allure/allure-model/2.21.0/allure-model-2.21.0.jar:/Users/nikitapuninskiy/.m2/repository/io/qameta/allure/allure-rest-assured/2.21.0/allure-rest-assured-2.21.0.jar:/Users/nikitapuninskiy/.m2/repository/io/qameta/allure/allure-attachments/2.21.0/allure-attachments-2.21.0.jar:/Users/nikitapuninskiy/.m2/repository/org/freemarker/freemarker/2.3.31/freemarker-2.3.31.jar:"/>
-    <property name="allure.results.directory" value="/Users/nikitapuninskiy/Documents/QA/Sprint_7/Sprint_7/target/allure-results"/>
     <property name="sun.cpu.endian" value="little"/>
+    <property name="allure.results.directory" value="/Users/nikitapuninskiy/Documents/QA/Sprint_7/Sprint_7/target/allure-results"/>
     <property name="user.home" value="/Users/nikitapuninskiy"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -33,8 +34,9 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/Users/nikitapuninskiy/Documents/QA/Sprint_7/Sprint_7/target/surefire/surefirebooter13084735547450185436.jar"/>
+    <property name="surefire.real.class.path" value="/Users/nikitapuninskiy/Documents/QA/Sprint_7/Sprint_7/target/surefire/surefirebooter6527814967597589361.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="11.0.17+8-LTS"/>
     <property name="user.name" value="nikitapuninskiy"/>
     <property name="path.separator" value=":"/>
@@ -59,9 +61,19 @@
     <property name="java.vm.version" value="11.0.17+8-LTS"/>
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="java.class.version" value="55.0"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="courierCreateTest" classname="CreateCourierTest" time="0.245"/>
-  <testcase name="courierCreateTestRightMessage" classname="CreateCourierTest" time="0.206"/>
-  <testcase name="courierCreateTestNotAllFields" classname="CreateCourierTest" time="0.055"/>
-  <testcase name="courierCreateSameName" classname="CreateCourierTest" time="0.238"/>
+  <testcase name="courierCreateTestRightMessage" classname="CreateCourierTest" time="0.471"/>
+  <testcase name="courierCreateTestNotAllFields" classname="CreateCourierTest" time="0.172"/>
+  <testcase name="courierCreateSameName" classname="CreateCourierTest" time="0.571">
+    <failure message="1 expectation failed.&#10;JSON path message doesn&apos;t match.&#10;Expected: Этот логин уже используется&#10;  Actual: Этот логин уже используется. Попробуйте другой.&#10;" type="java.lang.AssertionError">java.lang.AssertionError: 
+1 expectation failed.
+JSON path message doesn't match.
+Expected: Этот логин уже используется
+  Actual: Этот логин уже используется. Попробуйте другой.
+
+	at CreateCourierTest.creatingCourierSecond(CreateCourierTest.java:55)
+	at CreateCourierTest.courierCreateSameName(CreateCourierTest.java:43)
+</failure>
+  </testcase>
 </testsuite>

@@ -1,8 +1,6 @@
 package project;
-
 import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
-
 import static io.restassured.RestAssured.given;
 
 
@@ -15,6 +13,7 @@ public class CourierClient {
     public CourierClient() {
         RestAssured.baseURI = BASE_URI;
     }
+
 
     public ValidatableResponse create(Courier courier) {
         return given()

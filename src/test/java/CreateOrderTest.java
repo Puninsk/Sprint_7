@@ -1,18 +1,13 @@
 
 import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
-import org.apache.http.HttpStatus;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import project.OrdersClient;
 import static io.restassured.RestAssured.given;
-
-
 import static org.hamcrest.CoreMatchers.notNullValue;
-
-import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class CreateOrderTest {
@@ -50,9 +45,8 @@ public class CreateOrderTest {
                 .post("/api/v1/orders")
                 .then();
 
-        assertEquals(HttpStatus.SC_CREATED, response.extract().statusCode());
+        response.statusCode(201).assertThat().body("track", notNullValue());
 
-        response.assertThat().body("track", notNullValue());
     }
 }
 

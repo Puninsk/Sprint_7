@@ -23,6 +23,7 @@ public class GetOrders {
                 .when()// заполни body
                 .get("/api/v1/orders")
                 .then();
+
         assertEquals(HttpStatus.SC_OK, response.extract().statusCode());
 
     }
