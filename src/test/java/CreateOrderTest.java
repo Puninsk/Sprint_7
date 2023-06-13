@@ -13,6 +13,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 public class CreateOrderTest {
 
     private final String color;
+    public static final String ORDERS_POST_PATH = "/api/v1/orders";
 
     public CreateOrderTest(String color) {
         this.color = color;
@@ -42,7 +43,7 @@ public class CreateOrderTest {
                 .header("Content-type", "application/json")
                 .body(ordersClient)
                 .when()// заполни body
-                .post("/api/v1/orders")
+                .post(ORDERS_POST_PATH)
                 .then();
 
         response.statusCode(201).assertThat().body("track", notNullValue());

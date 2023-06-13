@@ -6,9 +6,11 @@ import static io.restassured.RestAssured.given;
 
 public class CourierClient {
 
-    public String BASE_URI = "http://qa-scooter.praktikum-services.ru/";
-    public String PATH = "/api/v1/courier";
-    public static String LOGIN_PATH = "/api/v1/courier/login";
+    public static final String BASE_URI = "http://qa-scooter.praktikum-services.ru/";
+    public static final String PATH = "/api/v1/courier";
+    public static final String LOGIN_PATH = "/api/v1/courier/login";
+
+    public static final String DELETE_PATH = "/api/v1/courier/";
 
     public CourierClient() {
         RestAssured.baseURI = BASE_URI;
@@ -38,7 +40,7 @@ public class CourierClient {
         return given()
                 .header("Content-type", "application/json")
                 .when()
-                .delete("/api/v1/courier/" + courierId)
+                .delete(DELETE_PATH + courierId)
                 .then();
      }
 
